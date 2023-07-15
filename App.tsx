@@ -5,7 +5,7 @@ import Login from '@pages/Login'
 import { SafeAreaView } from 'react-native'
 export default function App() {
 	return (
-		<SafeAreaView>
+		<SafeAreaView style={{flex:1, alignItems:'center', justifyContent:'center'}}>
 			<StatusBar style="auto" />
 			<Login/>
 		</SafeAreaView>

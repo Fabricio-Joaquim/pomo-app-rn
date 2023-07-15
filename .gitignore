@@ -25,6 +25,11 @@ project.xcworkspace
 # Android/IntelliJ
 #
 build/
+
+#ocultando dados do firebase
+android/app/google-services.json
+
+.env
 .idea
 .gradle
 local.properties
