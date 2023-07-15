@@ -1,0 +1,10 @@
+{
+  "expo": {
+    "name": "pomo-app-rn",
+    "slug": "pomo-app-rn",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
