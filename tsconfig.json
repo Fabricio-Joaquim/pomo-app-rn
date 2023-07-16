@@ -19,9 +19,12 @@
         "@pages/*": [
           "./src/Pages/*"
         ],
-        "@ervices/*": [
-          "./src/Service/*"
-        ]
+        "@services/*": [
+          "./src/Services/*"
+        ],
+        "@useHookStore/*": [
+          "./src/Store/hooks/*"
+        ],
       }
     
   },
