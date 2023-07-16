@@ -16,14 +16,20 @@
         "@assets/*": [
           "./src/Assets/*"
         ],
-        "@pages/*": [
-          "./src/Pages/*"
+        "@screens/*": [
+          "src/Screens/*"
         ],
         "@services/*": [
           "./src/Services/*"
         ],
         "@useHookStore/*": [
           "./src/Store/hooks/*"
+        ],
+        "@enums/*": [
+          "./src/Enums/*"
+        ],
+        "@interfaces/*": [
+          "./src/Interfaces/*"
         ],
       }
     

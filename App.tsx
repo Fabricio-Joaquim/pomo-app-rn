@@ -1,13 +1,17 @@
+import { NavigationContainer } from '@react-navigation/native'
+import { Routes } from './src/navigation/routes'
 import { StatusBar } from 'expo-status-bar'
-import React from 'react'
+import * as React from 'react'
 
-import Login from '@pages/Login'
-import { SafeAreaView } from 'react-native'
-export default function App() {
+function App() {
 	return (
-		<SafeAreaView style={{flex:1, alignItems:'center', justifyContent:'center'}}>
+		<>			
 			<StatusBar style="auto" />
-			<Login/>
-		</SafeAreaView>
+			<NavigationContainer>
+				<Routes />
+			</NavigationContainer>
+		</>
 	)
 }
+
+export default App

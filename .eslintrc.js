@@ -48,5 +48,6 @@ module.exports = {
 			'never'
 		],
 		'no-undef': 'off',
+		'react/react-in-jsx-scope': 'off',
 	}
 }
