@@ -5,6 +5,7 @@ import React from 'react'
 const PrivateRoutes = () => {
 	const Stack = createNativeStackNavigator()
 	return (
+		
 		<Stack.Navigator>
 			{
 				RoutesList.map((screen) => screen.isPrivate && (

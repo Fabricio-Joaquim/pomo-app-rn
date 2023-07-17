@@ -1,15 +1,21 @@
 import { IRoutesList } from '@interfaces/IRoutersLits'
 import { RoutesEnum } from '@enums/RoutesEnum'
+import Header from '@components/Header'
 import Login from '@screens/Login'
 import Home from '@screens/Home'
 
-const RoutesList: IRoutesList [] = [
+const RoutesList: IRoutesList[] = [
 	{
 		name: RoutesEnum.Home,
 		component: Home,
 		isPrivate: true,
-		options:{
-			headerShown: false
+		options: {
+			statusBarTranslucent: true,
+			header: (props) => {
+				return (
+					<Header/>
+				)
+			}
 		}
 	},
 	{
