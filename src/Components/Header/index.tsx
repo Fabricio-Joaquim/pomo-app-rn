@@ -47,5 +47,5 @@ const Container = styled(LinearGradient)`
 `
 
 export const Profile = styled.View`
-    align-items: center;
+    align-items: center;	
 `

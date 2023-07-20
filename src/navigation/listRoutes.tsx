@@ -11,7 +11,7 @@ const RoutesList: IRoutesList[] = [
 		isPrivate: true,
 		options: {
 			statusBarTranslucent: true,
-			header: (props) => {
+			header: () => {
 				return (
 					<Header/>
 				)
@@ -22,6 +22,10 @@ const RoutesList: IRoutesList[] = [
 		name: RoutesEnum.Login,
 		component: Login,
 		isPrivate: false,
+		options: {
+			statusBarTranslucent: true,
+			headerShown: false
+		}
 	}
 ]
 

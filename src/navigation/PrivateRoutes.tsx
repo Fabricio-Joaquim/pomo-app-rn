@@ -8,7 +8,7 @@ const PrivateRoutes = () => {
 		
 		<Stack.Navigator>
 			{
-				RoutesList.map((screen) => screen.isPrivate && (
+				RoutesList.map((screen) => (
 					<Stack.Screen
 						key={`screen-${screen.name}`}
 						name={screen.name}

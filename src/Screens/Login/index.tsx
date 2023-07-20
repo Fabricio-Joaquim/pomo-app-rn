@@ -1,19 +1,24 @@
 import { GoogleSigninButton } from '@react-native-google-signin/google-signin'
 import {useGoogleAuth} from '@services/useGoogleAuth'
-import { Button, Text, View } from 'react-native'
+import styled from 'styled-components/native'
 import React from 'react'
 
 const Login: React.FC = () => {
 
-	const { signIn, Logout, getCurrentUser } = useGoogleAuth()
+	const { signIn } = useGoogleAuth()
 
 	return (
-		<View>
-			<Text> Login </Text>
+		<Container>
 			<GoogleSigninButton onPress={signIn} />
-			<Button title="Logout" onPress={Logout} />
-		</View>
+		</Container>
 	)
 }
 
 export default Login
+
+const Container = styled.View`
+	flex: 1;
+	align-items: center;
+	justify-content: center;
+	background-color: #fff;
+`
