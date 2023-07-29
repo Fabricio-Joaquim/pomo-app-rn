@@ -1,28 +1,22 @@
 import { View, Text, useWindowDimensions } from 'react-native'
 import { DrawerLayout } from 'react-native-gesture-handler'
-import { Image, Name, Profile } from '@components/Header'
 import { useGoogleAuth } from '@services/useGoogleAuth'
+import { SimpleLineIcons } from '@expo/vector-icons'
+import { Image, Name } from '@components/Header'
 import { useUser } from '@useHookStore/useUser'
-import React, { useRef } from 'react'
-import { TouchableOpacity } from 'react-native'
+import styled from 'styled-components/native'
+import React from 'react'
 
 interface IProps {
-    children: React.ReactNode
+	children: React.ReactNode
 }
 
-const MyDrawerLayout = ({children}:IProps) => {
-	const drawerRef = useRef(null)
-	const {user} = useUser()
+const MyDrawerLayout = ({ children }: IProps) => {
+	const { user } = useUser()
 	const { Logout } = useGoogleAuth()
-	const dimensionWidth = useWindowDimensions().width/2
-	const openDrawer = () => {
-		drawerRef.current.openDrawer()
-	}
-  
-	const closeDrawer = () => {
-		drawerRef.current.closeDrawer()
-	}
-	const namesub: string[] = user?.user.displayName?.split(' ') ?? ['']
+	const dimensionWidth = useWindowDimensions().width / 2
+
+	const namesub: string[] = user?.user?.displayName?.split(' ') ?? ['']
 
 	return (
 		<DrawerLayout
@@ -36,13 +30,12 @@ const MyDrawerLayout = ({children}:IProps) => {
 					alignItems: 'center',
 					height: '100%',
 				}}>
-					<Image source={{uri: user?.user?.photoURL }} />
+					<Image source={{ uri: user?.user?.photoURL }} />
 					<Name>{`${namesub[0]} ${namesub[1]}`}</Name>
 					<Text>{user?.user.email}</Text>
-
-					<TouchableOpacity style={{ position:'absolute', bottom:10, backgroundColor:'#d3d3', padding:10, borderRadius:10 }} onPress={() => Logout()}>
-						<Text>Logout</Text>
-					</TouchableOpacity>
+					<ButtonLogout onPress={() => Logout()}>
+						<SimpleLineIcons name="logout" size={24} color="white" /><TextLogout>Logout</TextLogout>
+					</ButtonLogout>
 				</View>
 			)}
 		>
@@ -50,7 +43,21 @@ const MyDrawerLayout = ({children}:IProps) => {
 		</DrawerLayout>
 	)
 }
-  
-  
-export {MyDrawerLayout}
-  
+
+export { MyDrawerLayout }
+
+const ButtonLogout = styled.TouchableOpacity`
+	position: absolute;
+	bottom: 10px;
+	background-color: #ff0000cf;
+	flex-direction: row;
+	gap: 10px;
+	align-items: center;
+	padding: 10px;
+	border-radius: 8px;
+`
+const TextLogout = styled.Text`
+	color: #fff;
+	font-size: 18px;
+	font-weight: 400;
+`

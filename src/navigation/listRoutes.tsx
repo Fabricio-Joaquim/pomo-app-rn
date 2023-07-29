@@ -1,6 +1,6 @@
 import { IRoutesList } from '@interfaces/IRoutersLits'
+import Header from '@components/Header/HeaderTast'
 import { RoutesEnum } from '@enums/RoutesEnum'
-import Header from '@components/Header'
 import Login from '@screens/Login'
 import Home from '@screens/Home'
 
@@ -10,12 +10,7 @@ const RoutesList: IRoutesList[] = [
 		component: Home,
 		isPrivate: true,
 		options: {
-			statusBarTranslucent: true,
-			header: () => {
-				return (
-					<Header/>
-				)
-			}
+			header: Header
 		}
 	},
 	{

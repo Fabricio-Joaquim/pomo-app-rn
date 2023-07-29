@@ -18,7 +18,6 @@ const useGoogleAuth = () => {
 					const googleCredential = auth.GoogleAuthProvider.credential(idToken)
 					auth().signInWithCredential(googleCredential).then((user) => {
 						setUser(user)
-
 						navigation.navigate(RoutesEnum.Home)
 					})
 				})

@@ -1,19 +1,32 @@
-import React from 'react'
+import auth from '@react-native-firebase/auth'
+import { useToast } from '../../hooks/Toast'
+import BoxCard from '@components/BoxCard'
 import { View } from 'react-native'
-import firebase from '@react-native-firebase/firestore'
+import React from 'react'
 
 const Home: React.FC = () => {
 
-	firebase().settings({
-		persistence: true,
-	})
+	const { showToast } = useToast()
 
-	firebase().collection('users').add({
-		name: 'Ada Lovelace',
-		age: 30,
-	})
+	const getDAta = async () => {
+		await auth().app.firestore().collection('Tasks').get().then((doc) => {
+			console.log(doc.forEach((d) => {
+				console.log(d.data())
+				showToast('success', d.data().nome, 'teste')
+			}
+			))
 
-	return <View />
+		}).catch((err) => {
+			console.log(err)
+		})
+	}
+
+	return (
+		<View>
+			<BoxCard />
+		</View>
+	)
 }
 
 export default Home
+
