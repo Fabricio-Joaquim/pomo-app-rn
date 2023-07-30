@@ -1,9 +1,9 @@
-import { IRoutesList } from '@interfaces/IRoutersLits'
+import { IRoutesList, IModalRoutesList } from '@interfaces/IRoutersLits'
+import { RoutesEnum, ModalRoutesEnum } from '@enums/RoutesEnum'
 import Header from '@components/Header/HeaderTast'
-import { RoutesEnum } from '@enums/RoutesEnum'
 import Login from '@screens/Login'
+import Modal from '@screens/CreateTask'
 import Home from '@screens/Home'
-
 const RoutesList: IRoutesList[] = [
 	{
 		name: RoutesEnum.Home,
@@ -24,4 +24,16 @@ const RoutesList: IRoutesList[] = [
 	}
 ]
 
-export { RoutesList }
+const ModalList: IModalRoutesList[] = [
+	{
+		name: ModalRoutesEnum.Register,
+		component: Modal,
+		isPrivate: true,
+		options: {
+			statusBarTranslucent: true,
+			headerShown: false
+		}
+	}
+]
+
+export { RoutesList, ModalList }

@@ -34,8 +34,13 @@
         "@useHooks": [
           "./src/hooks/*"
         ],
-      }
-    
+      },
+      "typeRoots": [
+        "node_modules/@types",
+        "src",
+        "./src/types/*",
+        "./src/types/navigate.d.ts",
+      ],
   },
   "extends": "expo/tsconfig.base"
 }

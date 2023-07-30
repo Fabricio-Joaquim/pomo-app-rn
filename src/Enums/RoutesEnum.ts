@@ -3,3 +3,7 @@ export enum RoutesEnum {
     Profile = 'Profile',
     Login = 'Login',
 }
+
+export enum ModalRoutesEnum {
+    Register = 'Register',
+}

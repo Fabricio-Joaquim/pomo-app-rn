@@ -1,22 +1,32 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
-import { RoutesList } from './listRoutes'
+import { RoutesList, ModalList } from './listRoutes'
 import React from 'react'
 
 const PrivateRoutes = () => {
 	const Stack = createNativeStackNavigator()
 	return (
-		
+
 		<Stack.Navigator>
-			{
-				RoutesList.map((screen) => (
-					<Stack.Screen
-						key={`screen-${screen.name}`}
-						name={screen.name}
-						component={screen.component}
-						options={screen.options}
-					/>
-				))
-			}
+			<Stack.Group>
+				{
+					RoutesList.map((screen) => (
+						<Stack.Screen
+							key={`screen-${screen.name}`}
+							{...screen}
+						/>
+					))
+				}
+			</Stack.Group>
+			<Stack.Group screenOptions={{ presentation: 'modal' }}>
+				{
+					ModalList.map((screen) => (
+						<Stack.Screen
+							key={`screen-${screen.name}`}
+							{...screen}
+						/>
+					))
+				}
+			</Stack.Group>
 		</Stack.Navigator>
 	)
 }
