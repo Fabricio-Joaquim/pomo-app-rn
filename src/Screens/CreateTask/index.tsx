@@ -1,28 +1,36 @@
+import { SelectController } from '@components/Input/SelectController'
+import DataPickerInput from '@components/Input/DatePickerController'
 import { useModelCreateTaskForm } from './ModelCreateTaskForm'
-import DataPickerInput from '@components/Input/DatePicker'
 import Input from '@components/Input/TextInputController'
 import styled from 'styled-components/native'
 import { Text, Button } from 'react-native'
-import React from 'react'
+import React, { useMemo } from 'react'
 
 const CreateTask: React.FC = () => {
 
 	const { control, handleSubmit } = useModelCreateTaskForm()
+	const LIST = useMemo(() => [
+		{ label: 'Low', value: 1 },
+		{ label: 'Medium', value: 2 },
+		{ label: 'High', value: 3 }
+	], [])
 	return (
 		<Container>
-			<Text>CreateTask</Text>
+			<Text style={{fontSize:28, fontWeight:'700'}}>CreateTask</Text>
 			<ContainerColumn>
 				<ColumnInput>
 					<Input control={control} name='title' />
 					<Input control={control} name='description' />
 				</ColumnInput>
 				<ColumnInput>
-					<DataPickerInput control={control} name='data'/>
-					<Input control={control} name='time' />
+					<DataPickerInput mode='date' control={control} name='date' title={'Data'}/>
+					<DataPickerInput mode='time' control={control} name='time' title={'Time'}/>
 				</ColumnInput>
-				<Input control={control} name='priority' />
+				<ColumnInput>
+					<SelectController control={control} name='priority' items={LIST} />
+				</ColumnInput>
 			</ContainerColumn>
-			<Button onPress={handleSubmit} title="Dismiss" />
+			<Button onPress={handleSubmit} title="Send" />
 		</Container>
 	)
 }
@@ -44,6 +52,8 @@ const ContainerColumn = styled.View`
 
 const ColumnInput = styled.View`
 	width: 50%;
+	gap: 20px;
+	margin-top: 20px;
 	align-items: center;
 	justify-content: center;
 `

@@ -16,7 +16,7 @@ const Input = ({control, name}:IProps) => {
 					<Text style={{fontSize:18, fontWeight:'400', marginLeft:6}} >{name}</Text>
 					<TextInput
 						onBlur={onBlur}
-						style={{ height: 40, borderColor: 'gray', borderWidth: 1, borderRadius: 15, minWidth: '43%', paddingHorizontal: 10 }}
+						style={{ height: 40, borderColor: 'gray', borderWidth: 1, borderRadius: 15, minWidth: '70%', paddingHorizontal: 10 }}
 						placeholder={name}
 						onChangeText={value => onChange(value)}
 						value={value}
