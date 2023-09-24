@@ -1,4 +1,4 @@
-import { getFirebase } from '@services/getCollectionFirebae'
+import { getFirebase } from '@services/Firebase/getCollectionFirebae'
 import { QueryEnum } from '@enums/QuerysENum'
 import BoxCard from '@components/BoxCard'
 import { FlatList } from 'react-native'
@@ -9,7 +9,14 @@ const Home: React.FC = () => {
 
 	const { data, refetch, isLoading } = useQuery(
 		QueryEnum.GET_ALL_TASKS,
-		() => getFirebase({ collectionName: 'tasks' }
+		() => getFirebase({
+			collectionName: 'tasks',
+			where: {
+				field: 'status',
+				operator: '!=',
+				value: true
+			}
+		}
 		))
 
 	return (

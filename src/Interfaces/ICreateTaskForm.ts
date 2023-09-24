@@ -4,5 +4,7 @@ export interface ICreateTaskForm {
     date: string;
     time: string;
     priority: string;
-    id?: string;
+    id: string | null | undefined;
+    status: boolean | undefined;
+    archived: boolean | undefined;
 }

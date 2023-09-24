@@ -4,8 +4,9 @@ import { useModelCreateTaskForm } from './model/ModelCreateTaskForm'
 import Input from '@components/Input/TextInputController'
 import { PriorityEnum } from '@enums/PriorityEnum'
 import styled from 'styled-components/native'
-import { Text, Button } from 'react-native'
+import { Button } from '@components/Button'
 import React, { useMemo } from 'react'
+import { Text } from 'react-native'
 
 const CreateTask: React.FC = () => {
 
@@ -29,12 +30,14 @@ const CreateTask: React.FC = () => {
 					<DataPickerInput mode='time' control={control} name='time' title={'Time'} />
 				</ColumnInput>
 				<TextArea>
-					<Input control={control} name='description' 
+					<Input control={control} name='description'
 						style={{ textAlignVertical: 'top', height: 200, width: '100%' }}
 						multiline={true} numberOfLines={4} />
 				</TextArea>
 			</ContainerColumn>
-			<Button onPress={handleSubmit} title="Send" />
+			<Button color='primary' onPress={handleSubmit}>
+				<Text style={{ fontWeight: '700' }}>Create</Text>
+			</Button>
 		</Container>
 	)
 }
