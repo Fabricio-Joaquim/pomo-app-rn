@@ -1,28 +1,25 @@
-import { ICreateTaskForm } from '@interfaces/ICreateTaskForm'
 import { getFirebase } from '@services/getCollectionFirebae'
+import { QueryEnum } from '@enums/QuerysENum'
 import BoxCard from '@components/BoxCard'
 import { FlatList } from 'react-native'
+import { useQuery } from 'react-query'
 import React from 'react'
 
 const Home: React.FC = () => {
 
-	const [tasks, setTasks] = React.useState<ICreateTaskForm[]>([])
-	const [refreshing, setRefreshing] = React.useState(false)
-
-	React.useEffect(() => {
-		getFirebase({ collectionName: 'tasks' })
-			.then(setTasks)
-			.finally(() => setRefreshing(false))
-	},[refreshing])
+	const { data, refetch, isLoading } = useQuery(
+		QueryEnum.GET_ALL_TASKS,
+		() => getFirebase({ collectionName: 'tasks' }
+		))
 
 	return (
 		<FlatList
-			data={tasks}
+			data={data}
 			renderItem={({ item }) => <BoxCard key={item.id} {...item} />}
 			showsVerticalScrollIndicator={false}
 			keyExtractor={(item) => item.id!.toString()}
-			refreshing={refreshing}	
-			onRefresh={() => setRefreshing(!refreshing)}
+			refreshing={isLoading}
+			onRefresh={refetch}
 		/>
 	)
 }
