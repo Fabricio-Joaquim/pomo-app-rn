@@ -1,27 +1,31 @@
 import { Controller, ControllerProps } from 'react-hook-form'
-import { Text, TextInput, View } from 'react-native'
+import { TextInputProps, View } from 'react-native'
+import styled from 'styled-components/native'
 import React from 'react'
 
-interface IProps{
-    control: ControllerProps<any>['control'],
-    name: string
+interface IProps extends TextInputProps {
+	control: ControllerProps<any>['control'],
+	name: string,
+	style?: any,
+	textArea?: boolean
 }
 
-const Input = ({control, name}:IProps) => {
+const Input = ({ control, name, style, textArea, ...rest }: IProps) => {
 	return (
 		<Controller
 			control={control}
-			render={({ field: { onChange, onBlur, value }, fieldState:{error} }) => (
-				<View style={{}}>
-					<Text style={{fontSize:18, fontWeight:'400', marginLeft:6}} >{name}</Text>
-					<TextInput
+			render={({ field: { onChange, onBlur, value }, fieldState: { error } }) => (
+				<View style={{ width: textArea ? '90%' : '100%' }}>
+					<TextLabel>{name}</TextLabel>
+					<TextInputStyled
 						onBlur={onBlur}
-						style={{ height: 40, borderColor: 'gray', borderWidth: 1, borderRadius: 15, minWidth: '70%', paddingHorizontal: 10 }}
+						style={[style]}
 						placeholder={name}
-						onChangeText={value => onChange(value)}
+						onChangeText={(value: any) => onChange(value)}
 						value={value}
+						{...rest}
 					/>
-					{error && <Text style={{color:'red', marginLeft:6}}>{error.message}</Text>}
+					{error && <Erro>{error.message}</Erro>}
 				</View>
 			)}
 			name={name}
@@ -31,3 +35,24 @@ const Input = ({control, name}:IProps) => {
 }
 
 export default Input
+
+const TextLabel = styled.Text`
+	font-size: 18px;
+	font-weight: 400;
+	margin-left: 6px;
+	text-transform: capitalize;
+`
+
+const TextInputStyled = styled.TextInput`
+	height: 40px;
+	border-color: gray;
+	border-width: 1px;
+	border-radius: 15px;
+	min-width: 70%;
+	padding-horizontal: 10px;
+`
+
+const Erro = styled.Text`
+	color: red;
+	margin-left: 6px;
+`

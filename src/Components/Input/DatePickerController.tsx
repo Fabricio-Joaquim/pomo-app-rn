@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 import { Controller } from 'react-hook-form'
 import { View, Text } from 'react-native'
 import React, { useState } from 'react'
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+
 //@ts-ignore
 interface IProps extends BaseProps {
 	mode: 'date' | 'time'
@@ -17,6 +17,10 @@ interface IProps extends BaseProps {
 
 const DataPickerInput = ({ mode, display, control, name, title }: IProps) => {
 	const [show, setShow] = useState(false)
+	const displayDateOrTime = (value: Date) => {
+		const timeString = `${value.getHours()}:${value.getMinutes()} ${value.getHours() > 12 ? 'PM' : 'AM'}`
+		return mode === 'date' ? value.toLocaleDateString() : timeString
+	}
 
 	return (
 		<Container>
@@ -29,7 +33,7 @@ const DataPickerInput = ({ mode, display, control, name, title }: IProps) => {
 						<Label>{title}</Label>
 						<Input onPress={() => setShow(true)}>
 							<Icon name={mode === 'date' ? 'calendar-multiselect' : 'clock-time-eleven-outline'} size={24} color="black" />
-							<Text> {mode === 'date' ? value.toLocaleDateString() : value.toLocaleTimeString().slice(0,5) } </Text>
+							<Text> {displayDateOrTime(value)} </Text>
 						</Input>
 						{show && (
 							<DateTimePicker
