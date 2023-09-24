@@ -3,6 +3,7 @@ module.exports = {
 		'browser': true,
 		'es2021': true
 	},
+	
 	'extends': [
 		'eslint:recommended',
 		'plugin:@typescript-eslint/recommended',
@@ -26,6 +27,12 @@ module.exports = {
 		'ecmaVersion': 'latest',
 		'sourceType': 'module'
 	},
+	settings: {
+		react: {
+			version: 'detect',
+		},
+	},
+  
 	'plugins': [
 		'@typescript-eslint',
 		'react'
