@@ -14,11 +14,9 @@ export class MinhaClasse {
 			// Chamada metodoA(nome, sobrenome)
 			const nome = arg1
 			const sobrenome = arg2
-			console.log(`Nome: ${nome}, Sobrenome: ${sobrenome}`)
 		} else if (typeof arg1 === 'object') {
 			// Chamada metodoA({ nome, sobrenome })
 			const { nome, sobrenome } = arg1
-			console.log(`Nome: ${nome}, Sobrenome: ${sobrenome}`)
 		} else {
 			throw new Error('Chamada inválida para o método metodoA.')
 		}
@@ -56,13 +54,11 @@ function showToast(arg1: IProps | ('success' | 'error' | 'info' | 'any'), arg2?:
 	if (typeof arg1 === 'object') {
 		// Chamada showToast({ type, text1, text2 })
 		params = arg1
-		console.log(`Type: ${params.type}, Text1: ${params.text1}, Text2: ${params.text2}`)
 	} else if (typeof arg1 === 'string' && arg2 !== undefined && arg3 !== undefined) {
 		// Chamada showToast(type, text1, text2)
 		type = arg1
 		text1 = arg2
 		text2 = arg3
-		console.log(`Type: ${type}, Text1: ${text1}, Text2: ${text2}`)
 	} else {
 		throw new Error('Chamada inválida para a função showToast.')
 	}

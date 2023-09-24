@@ -28,6 +28,8 @@ build/
 
 #ocultando dados do firebase
 android/app/google-services.json
+google-services.json
+
 
 .env
 .idea

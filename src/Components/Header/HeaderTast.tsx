@@ -38,11 +38,10 @@ const ButtonNewTask = styled.TouchableOpacity`
 `
 
 const ContainerData = styled.View`
-	justify-content: space-around;
+	justify-content: space-between;
 	flex-direction: row;
 	align-items: center;
-	gap: 120px;
-	padding: 20px 0px;
+	padding: 20px;
 `
 
 const ViewData = styled.View`

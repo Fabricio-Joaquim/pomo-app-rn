@@ -2,7 +2,7 @@ import firestore from '@react-native-firebase/firestore'
 import { useToast } from '@useHooks/Toast'
 
 interface IProps {
-	data: { [key: string]: unknown },
+	data: { [key: string]: any },
 	collectionName: string,
 	sucessMessage?: string,
 	errorMessage?: string,
@@ -12,7 +12,6 @@ const postFirebase = ({ data, collectionName, sucessMessage, errorMessage }: IPr
 
 	const { showToast } = useToast()
 
-	console.log(data, collectionName)
 	return firestore()
 		.collection(collectionName)
 		.add(data)

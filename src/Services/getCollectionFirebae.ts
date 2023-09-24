@@ -4,7 +4,7 @@ interface IProps {
     collectionName: string
 }
 
-const getFirebase = ({ collectionName }: IProps): Promise<unknown> => {
+const getFirebase = ({ collectionName }: IProps): Promise<any> => {
 	return firestore()
 		.collection(collectionName)
 		.get()

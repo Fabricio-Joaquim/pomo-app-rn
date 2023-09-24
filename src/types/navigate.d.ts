@@ -8,10 +8,6 @@ declare global {
         Profile: undefined;
         Login: undefined;
         Register: undefined;
-      // Adicione aqui as definições de suas rotas
-      // por exemplo:
-      // Home: undefined;
-      // Profile: { userId: string };
     }
   }
 }

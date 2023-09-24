@@ -9,6 +9,9 @@
     "android": {
       "googleServicesFile": "./google-services.json"
     },
-    "plugins": ["@react-native-google-signin/google-signin"]
+    "plugins": [
+      "@react-native-firebase/app", 
+      "@react-native-google-signin/google-signin"
+    ]
   }
 }
