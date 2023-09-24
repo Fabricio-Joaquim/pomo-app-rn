@@ -1,7 +1,8 @@
 import { SelectController } from '@components/Input/SelectController'
 import DataPickerInput from '@components/Input/DatePickerController'
-import { useModelCreateTaskForm } from './ModelCreateTaskForm'
+import { useModelCreateTaskForm } from './model/ModelCreateTaskForm'
 import Input from '@components/Input/TextInputController'
+import { PriorityEnum } from '@enums/PriorityEnum'
 import styled from 'styled-components/native'
 import { Text, Button } from 'react-native'
 import React, { useMemo } from 'react'
@@ -10,25 +11,28 @@ const CreateTask: React.FC = () => {
 
 	const { control, handleSubmit } = useModelCreateTaskForm()
 	const LIST = useMemo(() => [
-		{ label: 'Low', value: 1 },
-		{ label: 'Medium', value: 2 },
-		{ label: 'High', value: 3 }
+		{ label: 'Low', value: PriorityEnum.Low },
+		{ label: 'Medium', value: PriorityEnum.Medium },
+		{ label: 'High', value: PriorityEnum.High }
 	], [])
+
 	return (
 		<Container>
-			<Text style={{fontSize:28, fontWeight:'700'}}>CreateTask</Text>
+			<Text style={{ fontSize: 28, fontWeight: '700' }}>CreateTask</Text>
 			<ContainerColumn>
 				<ColumnInput>
 					<Input control={control} name='title' />
-					<Input control={control} name='description' />
-				</ColumnInput>
-				<ColumnInput>
-					<DataPickerInput mode='date' control={control} name='date' title={'Data'}/>
-					<DataPickerInput mode='time' control={control} name='time' title={'Time'}/>
-				</ColumnInput>
-				<ColumnInput>
 					<SelectController control={control} name='priority' items={LIST} />
 				</ColumnInput>
+				<ColumnInput>
+					<DataPickerInput mode='date' control={control} name='date' title={'Data'} />
+					<DataPickerInput mode='time' control={control} name='time' title={'Time'} />
+				</ColumnInput>
+				<TextArea>
+					<Input control={control} name='description' 
+						style={{ textAlignVertical: 'top', height: 200, width: '100%' }}
+						multiline={true} numberOfLines={4} />
+				</TextArea>
 			</ContainerColumn>
 			<Button onPress={handleSubmit} title="Send" />
 		</Container>
@@ -43,11 +47,13 @@ const Container = styled.View`
 	align-items: center;
 	justify-content: center;
 	background-color: #e4e3e31d;
+	padding: 0 2%;
 `
 
 const ContainerColumn = styled.View`
 	flex-direction: row;
 	flex-wrap: wrap;
+	margin-bottom: 3%;
 `
 
 const ColumnInput = styled.View`
@@ -56,4 +62,8 @@ const ColumnInput = styled.View`
 	margin-top: 20px;
 	align-items: center;
 	justify-content: center;
+`
+
+const TextArea = styled(ColumnInput)`
+	width: 100%;
 `

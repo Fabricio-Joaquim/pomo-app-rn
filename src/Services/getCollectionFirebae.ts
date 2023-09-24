@@ -17,8 +17,7 @@ const getFirebase = ({ collectionName }: IProps): Promise<any> => {
 			})
 			return data
 		})
-		.catch((error) => {
-			console.log(error)
+		.catch(() => {
 		})
 }
 
