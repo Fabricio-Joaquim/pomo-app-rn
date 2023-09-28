@@ -3,6 +3,7 @@ import { schemaCreateTaskForm } from '../schema/SchemaCreateTaskForm'
 import { ICreateTaskForm } from '@interfaces/ICreateTaskForm'
 import { useNavigation } from '@react-navigation/native'
 import { yupResolver } from '@hookform/resolvers/yup'
+import { StatusEnum } from '@enums/StatusEnum'
 import { QueryEnum } from '@enums/QuerysENum'
 import { useQueryClient } from 'react-query'
 import { useForm } from 'react-hook-form'
@@ -17,7 +18,7 @@ const useModelCreateTaskForm = () => {
 	)
 	const onSubmit = (data: ICreateTaskForm) =>
 		postFirebase({
-			data: { ...data, status: false, archived: false },
+			data: { ...data, status: StatusEnum.IN_PROGRESS },
 			collectionName: 'tasks'
 		})
 			.then(() => {

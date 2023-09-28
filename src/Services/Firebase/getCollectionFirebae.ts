@@ -1,19 +1,24 @@
-import firestore from '@react-native-firebase/firestore'
+import firestore, { FirebaseFirestoreTypes } from '@react-native-firebase/firestore'
 
 interface IProps {
-    collectionName: string;
-	where?: {
+	collectionName: string;
+	wheres?: {
 		field: string | number;
 		operator: any;
 		value: any;
-	}
+	}[]
 }
 
-const getFirebase = ({ collectionName, where }: IProps): Promise<any> => {
+const getFirebase = ({ collectionName, wheres }: IProps): Promise<any> => {
 
-	const defaultQuery = firestore().collection(collectionName)
-	const query = where ? defaultQuery.where(where.field, where.operator, where.value) : defaultQuery
-	
+	const defaultQuery: FirebaseFirestoreTypes.Query = firestore().collection(collectionName)
+
+	const query = wheres
+		? wheres.reduce((acc, where) => {
+			return acc.where(where.field, where.operator, where.value)
+		}, defaultQuery)
+		: defaultQuery
+
 	return query
 		.get()
 		.then((querySnapshot) => {

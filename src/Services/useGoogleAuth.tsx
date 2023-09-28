@@ -1,5 +1,5 @@
 import { GoogleSignin } from '@react-native-google-signin/google-signin'
-import { useNavigation, NavigationProp} from '@react-navigation/native'
+import { useNavigation } from '@react-navigation/native'
 import { useUser } from '@useHookStore/useUser'
 import auth from '@react-native-firebase/auth'
 import { RoutesEnum } from '@enums/RoutesEnum'
@@ -7,7 +7,7 @@ import { GoogleConfig } from '@services/api'
 
 const useGoogleAuth = () => {
 
-	const navigation:NavigationProp<RoutesEnum> = useNavigation()
+	const navigation = useNavigation()
 
 	GoogleConfig
 	const { setUser, logout } = useUser()
@@ -27,7 +27,7 @@ const useGoogleAuth = () => {
 	const Logout = async () => {
 		GoogleSignin.signOut().then(() => {
 			logout()
-			navigation.navigate('Login')
+			navigation.navigate(RoutesEnum.Login)
 		})
 	}
 

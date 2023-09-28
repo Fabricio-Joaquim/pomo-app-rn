@@ -1,4 +1,5 @@
 import { getFirebase } from '@services/Firebase/getCollectionFirebae'
+import { StatusEnum } from '@enums/StatusEnum'
 import { QueryEnum } from '@enums/QuerysENum'
 import BoxCard from '@components/BoxCard'
 import { FlatList } from 'react-native'
@@ -11,11 +12,11 @@ const Home: React.FC = () => {
 		QueryEnum.GET_ALL_TASKS,
 		() => getFirebase({
 			collectionName: 'tasks',
-			where: {
+			wheres: [{
 				field: 'status',
-				operator: '!=',
-				value: true
-			}
+				operator: '==',
+				value: StatusEnum.IN_PROGRESS
+			}]
 		}
 		))
 

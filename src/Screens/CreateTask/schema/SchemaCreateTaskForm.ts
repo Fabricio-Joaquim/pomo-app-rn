@@ -8,5 +8,4 @@ export const schemaCreateTaskForm = yup.object().shape({
 	time: yup.string().required('Time is required'),
 	id: yup.string().nullable(),
 	status: yup.boolean(),
-	archived: yup.boolean(),
 })

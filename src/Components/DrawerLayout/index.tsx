@@ -1,12 +1,12 @@
 import { View, Text, useWindowDimensions } from 'react-native'
 import { DrawerLayout } from 'react-native-gesture-handler'
+import ImageProfile from '../../assets/noProfileImage.png'
 import { useGoogleAuth } from '@services/useGoogleAuth'
 import { SimpleLineIcons } from '@expo/vector-icons'
 import { Image, Name } from '@components/Header'
 import { useUser } from '@useHookStore/useUser'
 import styled from 'styled-components/native'
 import React from 'react'
-
 interface IProps {
 	children: React.ReactNode
 }
@@ -17,6 +17,7 @@ const MyDrawerLayout = ({ children }: IProps) => {
 	const dimensionWidth = useWindowDimensions().width / 2
 
 	const namesub: string[] = user?.user?.displayName?.split(' ') ?? ['']
+	const ImageItem = user?.user.photoURL ? { uri: user?.user.photoURL } : ImageProfile
 
 	return (
 		<DrawerLayout
@@ -30,7 +31,7 @@ const MyDrawerLayout = ({ children }: IProps) => {
 					alignItems: 'center',
 					height: '100%',
 				}}>
-					<Image source={{ uri: user?.user?.photoURL }} />
+					<Image source={ImageItem} />
 					<Name>{`${namesub[0]} ${namesub[1]}`}</Name>
 					<Text>{user?.user.email}</Text>
 					<ButtonLogout onPress={() => Logout()}>

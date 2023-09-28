@@ -6,5 +6,4 @@ export interface ICreateTaskForm {
     priority: string;
     id: string | null | undefined;
     status: boolean | undefined;
-    archived: boolean | undefined;
 }
