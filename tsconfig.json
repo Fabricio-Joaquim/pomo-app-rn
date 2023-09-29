@@ -13,9 +13,6 @@
         "@utils/*": [
           "./src/Utils/*"
         ],
-        "@assets/*": [
-          "./src/Assets/*"
-        ],
         "@screens/*": [
           "src/Screens/*"
         ],
@@ -34,6 +31,9 @@
         "@useHooks/*": [
           "./src/hooks/*"
         ],
+        "@assets/*":[
+          "./src//assets/*"
+        ]
       },
       "typeRoots": [
         "node_modules/@types",

@@ -12,3 +12,13 @@ yarn install
 ```
 yarn android
 ```
+
+### Prebuild steps
+```
+npx expo prebuild --platform android
+```
+
+### Build
+```
+eas build --platform android --local
+```

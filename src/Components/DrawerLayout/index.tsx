@@ -1,6 +1,6 @@
 import { View, Text, useWindowDimensions } from 'react-native'
 import { DrawerLayout } from 'react-native-gesture-handler'
-import ImageProfile from '../../assets/noProfileImage.png'
+import ImageProfile from '@assets/noProfileImage.png'
 import { useGoogleAuth } from '@services/useGoogleAuth'
 import { SimpleLineIcons } from '@expo/vector-icons'
 import { Image, Name } from '@components/Header'

@@ -9,12 +9,14 @@ const PrivateRoutes = () => {
 		<Stack.Navigator>
 			<Stack.Group>
 				{
-					RoutesList.map((screen) => (
-						<Stack.Screen
-							key={`screen-${screen.name}`}
-							{...screen}
-						/>
-					))
+					RoutesList.map((screen) => {
+						console.log(screen)
+						return(
+							<Stack.Screen
+								key={`screen-${screen.name}`}
+								{...screen}
+							/>
+						)})
 				}
 			</Stack.Group>
 			<Stack.Group screenOptions={{ presentation: 'modal' }}>
