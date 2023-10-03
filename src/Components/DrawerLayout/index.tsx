@@ -1,12 +1,12 @@
+import { DrawerLayout, DrawerLayoutAndroid } from 'react-native-gesture-handler'
 import { View, Text, useWindowDimensions } from 'react-native'
-import { DrawerLayout } from 'react-native-gesture-handler'
-import ImageProfile from '@assets/noProfileImage.png'
 import { useGoogleAuth } from '@services/useGoogleAuth'
+import ImageProfile from '@assets/noProfileImage.png'
 import { SimpleLineIcons } from '@expo/vector-icons'
 import { Image, Name } from '@components/Header'
 import { useUser } from '@useHookStore/useUser'
 import styled from 'styled-components/native'
-import React from 'react'
+import React, { useRef } from 'react'
 interface IProps {
 	children: React.ReactNode
 }
@@ -15,13 +15,20 @@ const MyDrawerLayout = ({ children }: IProps) => {
 	const { user } = useUser()
 	const { Logout } = useGoogleAuth()
 	const dimensionWidth = useWindowDimensions().width / 2
+	const drawerRef = useRef<DrawerLayoutAndroid>(null)
 
 	const namesub: string[] = user?.user?.displayName?.split(' ') ?? ['']
 	const ImageItem = user?.user.photoURL ? { uri: user?.user.photoURL } : ImageProfile
 
+	const onLogout = () => {
+		Logout()
+		drawerRef?.current?.closeDrawer()
+	}
+
 	return (
 		<DrawerLayout
 			drawerWidth={dimensionWidth}
+			ref={drawerRef}
 			drawerPosition="left"
 			renderNavigationView={() => (
 				<View style={{
@@ -34,7 +41,7 @@ const MyDrawerLayout = ({ children }: IProps) => {
 					<Image source={ImageItem} />
 					<Name>{`${namesub[0]} ${namesub[1]}`}</Name>
 					<Text>{user?.user.email}</Text>
-					<ButtonLogout onPress={() => Logout()}>
+					<ButtonLogout onPress={onLogout}>
 						<SimpleLineIcons name="logout" size={24} color="white" /><TextLogout>Logout</TextLogout>
 					</ButtonLogout>
 				</View>

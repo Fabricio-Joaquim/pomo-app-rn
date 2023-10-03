@@ -10,7 +10,6 @@ const PrivateRoutes = () => {
 			<Stack.Group>
 				{
 					RoutesList.map((screen) => {
-						console.log(screen)
 						return(
 							<Stack.Screen
 								key={`screen-${screen.name}`}

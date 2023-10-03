@@ -20,7 +20,9 @@ export default {
 		},
 		plugins: [
 			'@react-native-firebase/app',
-			'@react-native-google-signin/google-signin'
+			'@react-native-google-signin/google-signin',
+			'@react-native-firebase/perf',
+			'@react-native-firebase/crashlytics'
 		],
 		splash: {
 			image: './src/assets/splash.png',
