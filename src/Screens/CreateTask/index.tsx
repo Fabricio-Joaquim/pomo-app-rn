@@ -1,6 +1,7 @@
 import { SelectController } from '@components/Input/SelectController'
 import DataPickerInput from '@components/Input/DatePickerController'
 import { useModelCreateTaskForm } from './model/ModelCreateTaskForm'
+import { HeaderGoBack } from '@components/Header/HeaderGoBack'
 import Input from '@components/Input/TextInputController'
 import { PriorityEnum } from '@enums/PriorityEnum'
 import styled from 'styled-components/native'
@@ -18,27 +19,29 @@ const CreateTask: React.FC = () => {
 	], [])
 
 	return (
-		<Container>
-			<Text style={{ fontSize: 28, fontWeight: '700' }}>CreateTask</Text>
-			<ContainerColumn>
-				<ColumnInput>
-					<Input control={control} name='title' />
-					<SelectController control={control} name='priority' items={LIST} />
-				</ColumnInput>
-				<ColumnInput>
-					<DataPickerInput mode='date' control={control} name='date' title={'Data'} />
-					<DataPickerInput mode='time' control={control} name='time' title={'Time'} />
-				</ColumnInput>
-				<TextArea>
-					<Input control={control} name='description'
-						style={{ textAlignVertical: 'top', height: 200, width: '100%' }}
-						multiline={true} numberOfLines={4} />
-				</TextArea>
-			</ContainerColumn>
-			<Button color='primary' onPress={handleSubmit}>
-				<Text style={{ fontWeight: '700' }}>Create</Text>
-			</Button>
-		</Container>
+		<HeaderGoBack>
+			<Container>
+				<Text style={{ fontSize: 28, fontWeight: '700' }}>Create Task</Text>
+				<ContainerColumn>
+					<ColumnInput>
+						<Input control={control} name='title' />
+						<SelectController control={control} name='priority' items={LIST} />
+					</ColumnInput>
+					<ColumnInput>
+						<DataPickerInput mode='date' control={control} name='date' title={'Data'} />
+						<DataPickerInput mode='time' control={control} name='time' title={'Time'} />
+					</ColumnInput>
+					<TextArea>
+						<Input control={control} name='description'
+							style={{ textAlignVertical: 'top', height: 200, width: '100%' }}
+							multiline={true} numberOfLines={4} />
+					</TextArea>
+				</ContainerColumn>
+				<Button color='primary' onPress={handleSubmit}>
+					<Text style={{ fontWeight: '700' }}>Create</Text>
+				</Button>
+			</Container>
+		</HeaderGoBack>
 	)
 }
 

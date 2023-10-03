@@ -14,7 +14,7 @@ function App() {
 	return (
 		<ThemeProvider>
 			<NavigationContainer>
-				<StatusBar style="auto" />
+				<StatusBar style="inverted"/>
 				<QueryClientProvider client={queryClient}>
 					<Routes />
 				</QueryClientProvider>

@@ -30,7 +30,6 @@ export default {
 			backgroundColor: '#25292e'
 		},
 		icon: './src/assets/logo.png',
-		backgroundColor: '#25292e',
 		extra: {
 			eas: {
 				projectId: process.env.EAS_PROJECT_ID,
